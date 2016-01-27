@@ -22,3 +22,5 @@ HEADERS  += mainwindow.h \
     aqtcoords.h
 
 FORMS    += mainwindow.ui
+
+CONFIG += c++11
