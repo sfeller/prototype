@@ -15,4 +15,6 @@ int main(void)
       cout << "BaseDataTest Failed!" << endl;
       return 1;
    }
+   
+   cout << "All tests completed successfully!" << endl;
 }
