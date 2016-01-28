@@ -1,0 +1,5 @@
+This directory contains a basic example of a CMake installation project. 
+
+It builds the code in the base directory into a library.
+It builds the code in the apps directory into an executable
+It installs the result in /usr/local/CMakeExample. 
