@@ -9,6 +9,7 @@
 //==============================================================================
 #pragma once
 #include <thread>
+#include <mutex>
 
 //************************************************************
 /**
@@ -24,17 +25,22 @@
 class C11Thread
 {
     private:
-       bool initialized = false;       //!< Flag to indicate thread is operational
-       std::thread * threadObj = NULL; //!< Thread variable
-       bool * running = NULL;          //!< Flag to stop running (True during execution)
+       std::mutex threadMutex;            //!< Mutex to signal closure
+       bool initialized = false;          //!< Flag to indicate thread is operational
+       std::thread * threadObj = NULL;    //!< Thread variable
+       bool * runPtr = NULL;              //!< Flag to stop running by a shared pointer
+       bool running = false;              //!< Internal flag to stop execution due to function call
+
+       virtual void Execute( void * arg );
 
     protected:
 
     public:
        ~C11Thread();
-       bool Start( void * arg );
+       bool Start( void * arg = NULL, bool * runFlag=NULL );
        bool Join( void );
-       virtual void Execute( void * arg );
+       void Stop();
+       virtual void mainLoop();
 
     protected:
 };
