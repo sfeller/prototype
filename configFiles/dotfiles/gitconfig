@@ -1,0 +1,5 @@
+[credential]
+	helper = cache --timeout=3600
+[user]
+	email = steve.feller@gmail.com
+	name = Steve Feller
